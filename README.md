@@ -1,5 +1,5 @@
 # CheatSheetTemplate
 
-#You expected a BIO but it was ME, DIO
+# You expected a BIO but it was ME, DIO
 
-![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.myinstants.com%2Finstant%2Fkono-dio-da%2F&psig=AOvVaw1EjFKBX9ac3OSgzk3kjfPO&ust=1580895850402000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjBnZbOt-cCFQAAAAAdAAAAABAD)
+![WOw much picture](https://cdn.imgbin.com/14/11/6/imgbin-dio-brando-jotaro-kujo-jojo-s-bizarre-adventure-attack-on-titan-anime-anime-gypADQmMmQhukZEJei7RSL5AX.jpg)
