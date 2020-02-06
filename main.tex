@@ -1,7 +1,8 @@
 %%%%%%%%%%%%%%%%%
 % (v1.1.5, 1 December 2018) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
 %
-%% It may be distributed and/or modified under the
+%% It may be distributed and
+%%or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
 %% of this license or (at your option) any later version.
 %% The latest version of this license is in
@@ -37,13 +38,14 @@
 % Change the font if you want to, depending on whether
 % you're using pdflatex or xelatex/lualatex
 \ifxetexorluatex
-  % If using xelatex or lualatex:
-  \setmainfont{Lato}
+% If using xelatex or lualatex:
+\setmainfont{Lato}
 \else
-  % If using pdflatex:
-  \usepackage[utf8]{inputenc}
-  \usepackage[T1]{fontenc}
-  \usepackage[default]{lato}
+% If using pdflatex:
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage{biblatex}
 \fi
 
 % Change the colours if you want to
@@ -64,138 +66,123 @@
 \addbibresource{sample.bib}
 
 \begin{document}
-\name{Cheat-Sheet: [Project Name]}
-\tagline{Comment}
+  \name{Cheat-Sheet: Virtualisierung}
+  \tagline{Virtualisierung ist eine Hardware-Unterstützung, die den Betrieb virtueller Computer auf einem echten Computer erleichtert oder beschleunigt. Mit der Virtualisierung kann man mehrere Software-Systeme auf einer Hardware laufen lassen. Das können zum Beispiel unterschiedliche Betriebssysteme sein. Virtualisierung macht dann Sinn, wenn ein Hardware-System nicht ausgelastet ist und die Ressourcen parallel für weitere Systeme genutzt werden sollen.}
+
   %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
   % \orcid{orcid.org/0000-0000-0000-0000}
 
-\makecvheader
+  \makecvheader
 
-%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-% \AtBeginEnvironment{itemize}{\small}
+  %% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+  % \AtBeginEnvironment{itemize}{\small}
 
-%% Set the left/right column width ratio to 6:4.
-\columnratio{0.5}
+  %% Set the left/right column width ratio to 6:4.
+  \columnratio{0.5}
 
-% Start a 2-column paracol. Both the left and right columns will automatically
-% break across pages if things get too long.
-\begin{paracol}{2}
-\cvsection{Point 1}
+  % Start a 2-column paracol. Both the left and right columns will automatically
+  % break across pages if things get too long.
+  \begin{paracol}{2}
+    \cvsection{Vor- und Nachteile}
 
-\cvevent{Event Title}{Event Subtitle}{}{}
-\begin{itemize}
-\item Event bullet 1
-\item Event bullet 1
-\end{itemize}
+    \cvevent{Vorteile}{}{}{}
+    \begin{itemize}
+      \item Der Arbeitsspeicher und CPU werden konstanter ausgelastet, nicht nur bei Server-Spitzen.
+      \item Eine VM ist schnell wiederhergestellt. \newline Auf Host-Ebene einfach alle virtuellen Maschinen \newline gemeinsam zu sichern.
+      \item Mit wenig aufwand, einen weiteren Host aufsetzen und die VMs replizieren sich alle x Minuten.
+      \item Ein neuer Server,virtueller Desktop schnell aufgesetzt durch wenige Mausklicks.
+      \item Gesamtes System, auch virtuelle Server mit einem Programm verwaltbar.
 
-\divider
+    \end{itemize}
 
-\cvsection{Point 2}
+    \divider
 
-\cvevent{Project 1}{Funding agency/institution}{}{}
-\begin{itemize}
-\item Details
-\end{itemize}
+    \cvevent{Nachteile}{}{}{}
+    \begin{itemize}
+      \item Wenn Bandbreite des eigenen Netzwerkes nicht ausreichend, mögliche verstopfung der “Leitung”.
+      \item Wenn Server nicht genug Leistung hat, \newline muss nachgerüstet werden.
+      \item Bei installierung von Software sollte man wissen wie die Lizensierung funktioniert.
+      \item Es werden trotz virtualisierung Desktop-Rechner benötigt. Ob zur verwaltung der virtuellen Maschinen oder für Arbeitsplätze.
 
-\divider
+    \end{itemize}
 
-\cvevent{Project 2}{Funding agency/institution}{Project duration}{}
-A short abstract would also work.
+    \cvsection{Definitionen}
 
-\medskip
+    \cvevent{Hypervisor / VMM (VM-Monitor)}{}{}{}
+    \begin{itemize}
+      \item weist den verschiedenen virtuellen Instanzen die Hardware Ressourcen zu und verwaltet Isolation der virtuellen Systeme untereinander.
+    \end{itemize}
 
-\cvsection{Point 3}
+    \divider
 
-% use ONLY \newpage if you want to force a page break for
-% ONLY the current column
-\newpage
+    \cvevent{Gast}{}{}{}
+    \begin{itemize}
+      \item Eigene Instanz innerhalb des Hosts
+    \end{itemize}
 
-\cvsection{Point 4}
+    \divider
 
-\nocite{*}
+    \cvevent{Wirt (Host)}{}{}{}
+    \begin{itemize}
+      \item Bietet dem VMM die nötigen Resourcen zum verwalten.
+    \end{itemize}
 
-\printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+    \divider
+    \cvevent{Virtuelle Maschine (VM)}{}{}{}
+    \begin{itemize}
+      \item Emulation eines Betriebssystems
+    \end{itemize}
 
-\divider
+    \medskip
 
-\printbibliography[heading=pubtype,title={\printinfo{\faFileTextO}{Journal Articles}},type=article]
+    \switchcolumn
 
-\divider
+    \cvsection{Arten}
 
-\printbibliography[heading=pubtype,title={\printinfo{\faGroup}{Conference Proceedings}},type=inproceedings]
+    \cvachievement{\faDesktop}{Desktopvirtualisierung}{
+    \begin{itemize}
+      \item Abbild des Arbeitsplatzes zentral im Rechenzentrum Verfügungbar.
+      \item Anwender verbindet sich mit dem Image im Rechenzentrum
+      \item Je nach System und Strategie, ein dediziertes Image möglich oder alle / eine Gruppe von Mitarbeitern nutzt ein gemeinsames Image.
+    \end{itemize}
+    }
 
-%% Switch to the right column. This will now automatically move to the second
-%% page if the content is too long.
-\switchcolumn
-
-\cvsection{Point 5}
-
-\begin{quote}
-``Something smart or heartfelt, preferably in one sentence.''
-\end{quote}
-
-\cvsection{Point 6}
-
-\cvachievement{\faTrophy}{Fantastic Achievement}{and some details about it}
-
-\divider
-
-\cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
-
-\divider
-
-\cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
-
-\cvsection{Point 7}
-
-\cvtag{Hard-working}
-\cvtag{Eye for detail}\\
-\cvtag{Motivator \& Leader}
-
-\divider\smallskip
-
-\cvtag{C++}
-\cvtag{Embedded Systems}\\
-\cvtag{Statistical Analysis}
-
-\cvsection{Point 8}
-
-\cvskill{English}{5}
-\divider
-
-\cvskill{Spanish}{4}
-\divider
-
-\cvskill{German}{3}
-
-%% Yeah I didn't spend too much time making all the
-%% spacing consistent... sorry. Use \smallskip, \medskip,
-%% \bigskip, \vpsace etc to make ajustments.
-\medskip
-
-\cvsection{Point 9}
-
-\cvevent{Ph.D.\ in Your Discipline}{Your University}{Sept 2002 -- June 2006}{}
-Thesis title: Wonderful Research
-
-\divider
-
-\cvevent{M.Sc.\ in Your Discipline}{Your University}{Sept 2001 -- June 2002}{}
-
-\divider
-
-\cvevent{B.Sc.\ in Your Discipline}{Stanford University}{Sept 1998 -- June 2001}{}
-
-\newpage
-\cvsection{Sources / References}
-
-% \cvref{name}{email}{mailing address}
-\cvref{Prof.\ Alpha Beta}{Institute}{a.beta@university.edu}
-{Address Line 1\\Address line 2}
-
-\divider
+    \cvachievement{\faServer}{Server Virtualisierung}{
+    \begin{itemize}
+      \item Gemeinsame Nutzung der Host-Ressourcen
+      \item Ressourcenverwaltung durch Software möglich
+      \item Kann auf andere Host-Systeme verschoben werden
+    \end{itemize}
+    }
+    \cvachievement{\faWindows}{Betriebssysteme Virtualisierung}{
+    Andere Betriebssysteme sind auf dem Host-Betriebssystem parallel ausführbar \newline
+    }
 
 
-\end{paracol}
+    \cvachievement{\faDatabase}{Speichervirtualisierung }{
+    \begin{itemize}
+      \item Virtuelle Bereitstellung von Speicherplatz
+      \item Erstreckt sich über mehrere physische Storage-Geräte
+      \item Spricht nur den virtualisierten Speicher an
+      \item Virtualisierungssoftware sorgt für die physikalische Speicherung der Daten.
+    \end{itemize}
+    }
+    \cvachievement{\faWifi}{Netzwerkvirtualisierung}{
+    \begin{itemize}
+      \item Trennt die Netzwerkfunktionen von den physischen Systemen
+      \item Anzahl an physischen Systemen reduziert, da auf gemeinsamen Host-Systemen virtuell bereitgestellt...
+      \item (SDN) Hoher Grad der Virtualisierung, trennt die Netzwerksoftware vollständig von Netzwerkhardware.
+    \end{itemize}
+    }
+
+    \begin{thebibliography}{9}
+
+      \bibitem{typeReference}
+      Arten der Virtualisierung,
+      \\\texttt{https://www.cloudcomputing-insider.de\newline/was-ist-virtualisierung-a-756279/}
+
+    \end{thebibliography}
+
+  \end{paracol}
 
 \end{document}
