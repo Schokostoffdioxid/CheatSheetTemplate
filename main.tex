@@ -38,13 +38,13 @@
 % Change the font if you want to, depending on whether
 % you're using pdflatex or xelatex/lualatex
 \ifxetexorluatex
-% If using xelatex or lualatex:
-\setmainfont{Lato}
+  % If using xelatex or lualatex:
+  \setmainfont{Lato}
 \else
-% If using pdflatex:
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[default]{lato}
+  % If using pdflatex:
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[default]{lato}
 \usepackage{biblatex}
 \fi
 
@@ -61,128 +61,136 @@
 % for \cvskill if you want to
 \renewcommand{\itemmarker}{{\small\textbullet}}
 \renewcommand{\ratingmarker}{\faCircle}
-
+\linespread{0.9}
 %% sample.bib contains your publications
 \addbibresource{sample.bib}
 
 \begin{document}
-  \name{Cheat-Sheet: Virtualisierung}
-  \tagline{Virtualisierung ist eine Hardware-Unterstützung, die den Betrieb virtueller Computer auf einem echten Computer erleichtert oder beschleunigt. Mit der Virtualisierung kann man mehrere Software-Systeme auf einer Hardware laufen lassen. Das können zum Beispiel unterschiedliche Betriebssysteme sein. Virtualisierung macht dann Sinn, wenn ein Hardware-System nicht ausgelastet ist und die Ressourcen parallel für weitere Systeme genutzt werden sollen.}
+\name{\LARGE Cheat-Sheet: Virtualisierung}
+\tagline{\normalsize Virtualisierung ist eine Hardware-Unterstützung, die den Betrieb virtueller Computer auf einem echten Computer erleichtert oder beschleunigt. Mit der Virtualisierung kann man mehrere Software-Systeme auf einer Hardware laufen lassen. Das können zum Beispiel unterschiedliche Betriebssysteme sein. Virtualisierung macht dann Sinn, wenn ein Hardware-System nicht ausgelastet ist und die Ressourcen parallel für weitere Systeme genutzt werden sollen.}
 
   %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
   % \orcid{orcid.org/0000-0000-0000-0000}
 
-  \makecvheader
+\makecvheader
 
-  %% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-  % \AtBeginEnvironment{itemize}{\small}
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
 
-  %% Set the left/right column width ratio to 6:4.
-  \columnratio{0.5}
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.5}
 
-  % Start a 2-column paracol. Both the left and right columns will automatically
-  % break across pages if things get too long.
-  \begin{paracol}{2}
-    \cvsection{Vor- und Nachteile}
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+\cvsection{Vor- und Nachteile}
 
-    \cvevent{Vorteile}{}{}{}
+\cvevent{Vorteile}{}{}{}
+\begin{itemize}
+\item Arbeitsspeicher und CPU werden konstanter ausgelastet, nicht nur bei Server-Spitzen.
+\item Eine VM ist schnell wiederhergestellt. Auf Host-Ebene sind alle virtuellen Maschinen gemeinsam sicherbar.
+\item Mit wenig Aufwand, kann ein weiterer Host \newline / Server / virtueller Desktop aufgesetzt und die VMs repliziert werden.  
+\item Gesamtes System, auch virtuelle Server mit einem Programm verwaltbar.
+
+\end{itemize}
+
+\divider
+
+\cvevent{Nachteile}{}{}{}
+\begin{itemize}
+\item Wenn die Bandbreite des eigenen Netzwerkes nicht ausreichend, mögliche "Verstopfung" der Leitung.
+\item Wenn ein Server nicht genug Leistung hat, \newline muss nachgerüstet werden. (Kosten)
+\item Es werden trotz Virtualisierung Desktop-Rechner benötigt. Ob zur Verwaltung der virtuellen Maschinen, oder für Arbeitsplätze.
+
+\end{itemize}
+
+\cvsection{Definitionen}
+
+\cvevent{Hypervisor / VMM (VM-Monitor)}{}{}{}
+\begin{itemize}
+\item Weist den verschiedenen virtuellen Instanzen die Hardware Ressourcen zu und verwaltet Isolation der virtuellen Systeme untereinander.
+\end{itemize}
+
+\vspace{3mm}
+
+\cvevent{Gast}{}{}{}
+\begin{itemize}
+    \item Eigene Instanz innerhalb des Hosts 
+\end{itemize}
+
+\vspace{3mm}
+
+\cvevent{Wirt (Host)}{}{}{}
+\begin{itemize}
+    \item Bietet dem VMM die nötigen Resourcen zum verwalten.
+\end{itemize}
+
+\vspace{3mm}
+
+\cvevent{Virtuelle Maschine (VM)}{}{}{}
+\begin{itemize}
+    \item Emulation eines Betriebssystems
+\end{itemize}
+
+\rule{19cm}{0.4pt}
+
+\vspace{5mm}
+
+\includegraphics[width=0.48\textwidth]{Hosted.PNG}
+klalkslkalskalsklaklsaklkslakslka
+
+\switchcolumn
+
+\cvsection{Arten}
+
+\cvachievement{\faDesktop}{Desktopvirtualisierung}{
     \begin{itemize}
-      \item Der Arbeitsspeicher und CPU werden konstanter ausgelastet, nicht nur bei Server-Spitzen.
-      \item Eine VM ist schnell wiederhergestellt. \newline Auf Host-Ebene einfach alle virtuellen Maschinen \newline gemeinsam zu sichern.
-      \item Mit wenig aufwand, einen weiteren Host aufsetzen und die VMs replizieren sich alle x Minuten.
-      \item Ein neuer Server,virtueller Desktop schnell aufgesetzt durch wenige Mausklicks.
-      \item Gesamtes System, auch virtuelle Server mit einem Programm verwaltbar.
-
+        \item Abbild des Arbeitsplatzes zentral im Rechenzentrum Verfügungbar.
+        \item Anwender verbindet sich mit dem Image im Rechenzentrum
+        \item Je nach System und Strategie, ein dediziertes Image möglich oder alle / eine Gruppe von Mitarbeitern nutzt ein gemeinsames Image.
     \end{itemize}
+}
 
-    \divider
-
-    \cvevent{Nachteile}{}{}{}
+\cvachievement{\faServer}{Server Virtualisierung}{
     \begin{itemize}
-      \item Wenn Bandbreite des eigenen Netzwerkes nicht ausreichend, mögliche verstopfung der “Leitung”.
-      \item Wenn Server nicht genug Leistung hat, \newline muss nachgerüstet werden.
-      \item Bei installierung von Software sollte man wissen wie die Lizensierung funktioniert.
-      \item Es werden trotz virtualisierung Desktop-Rechner benötigt. Ob zur verwaltung der virtuellen Maschinen oder für Arbeitsplätze.
-
+        \item Gemeinsame Nutzung der Host-Ressourcen
+        \item Ressourcenverwaltung durch Software möglich
+        \item Kann auf andere Host-Systeme verschoben werden
     \end{itemize}
-
-    \cvsection{Definitionen}
-
-    \cvevent{Hypervisor / VMM (VM-Monitor)}{}{}{}
-    \begin{itemize}
-      \item weist den verschiedenen virtuellen Instanzen die Hardware Ressourcen zu und verwaltet Isolation der virtuellen Systeme untereinander.
-    \end{itemize}
-
-    \divider
-
-    \cvevent{Gast}{}{}{}
-    \begin{itemize}
-      \item Eigene Instanz innerhalb des Hosts
-    \end{itemize}
-
-    \divider
-
-    \cvevent{Wirt (Host)}{}{}{}
-    \begin{itemize}
-      \item Bietet dem VMM die nötigen Resourcen zum verwalten.
-    \end{itemize}
-
-    \divider
-    \cvevent{Virtuelle Maschine (VM)}{}{}{}
-    \begin{itemize}
-      \item Emulation eines Betriebssystems
-    \end{itemize}
-
-    \medskip
-
-    \switchcolumn
-
-    \cvsection{Arten}
-
-    \cvachievement{\faDesktop}{Desktopvirtualisierung}{
-    \begin{itemize}
-      \item Abbild des Arbeitsplatzes zentral im Rechenzentrum Verfügungbar.
-      \item Anwender verbindet sich mit dem Image im Rechenzentrum
-      \item Je nach System und Strategie, ein dediziertes Image möglich oder alle / eine Gruppe von Mitarbeitern nutzt ein gemeinsames Image.
-    \end{itemize}
-    }
-
-    \cvachievement{\faServer}{Server Virtualisierung}{
-    \begin{itemize}
-      \item Gemeinsame Nutzung der Host-Ressourcen
-      \item Ressourcenverwaltung durch Software möglich
-      \item Kann auf andere Host-Systeme verschoben werden
-    \end{itemize}
-    }
-    \cvachievement{\faWindows}{Betriebssysteme Virtualisierung}{
+}
+\cvachievement{\faWindows}{Betriebssysteme Virtualisierung}{
     Andere Betriebssysteme sind auf dem Host-Betriebssystem parallel ausführbar \newline
-    }
+}
 
 
-    \cvachievement{\faDatabase}{Speichervirtualisierung }{
+\cvachievement{\faDatabase}{Speichervirtualisierung }{
     \begin{itemize}
-      \item Virtuelle Bereitstellung von Speicherplatz
-      \item Erstreckt sich über mehrere physische Storage-Geräte
-      \item Spricht nur den virtualisierten Speicher an
-      \item Virtualisierungssoftware sorgt für die physikalische Speicherung der Daten.
+        \item Virtuelle Bereitstellung von Speicherplatz
+        \item Erstreckt sich über mehrere physische Storage-Geräte
+        \item Spricht nur den virtualisierten Speicher an
+        \item Virtualisierungssoftware sorgt für die physikalische Speicherung der Daten.
     \end{itemize}
-    }
-    \cvachievement{\faWifi}{Netzwerkvirtualisierung}{
+}
+\cvachievement{\faWifi}{Netzwerkvirtualisierung}{
     \begin{itemize}
-      \item Trennt die Netzwerkfunktionen von den physischen Systemen
-      \item Anzahl an physischen Systemen reduziert, da auf gemeinsamen Host-Systemen virtuell bereitgestellt...
-      \item (SDN) Hoher Grad der Virtualisierung, trennt die Netzwerksoftware vollständig von Netzwerkhardware.
+        \item Trennt die Netzwerkfunktionen von den physischen Systemen
+        \item Anzahl an physischen Systemen reduziert, da auf gemeinsamen Host-Systemen virtuell bereitgestellt... 
+        \item (SDN) Hoher Grad der Virtualisierung, trennt die Netzwerksoftware vollständig von Netzwerkhardware.
     \end{itemize}
-    }
+}
 
-    \begin{thebibliography}{9}
+\includegraphics[width=0.48\textwidth]{Bare.PNG}
 
-      \bibitem{typeReference}
-      Arten der Virtualisierung,
-      \\\texttt{https://www.cloudcomputing-insider.de\newline/was-ist-virtualisierung-a-756279/}
+\newpage
 
-    \end{thebibliography}
+\begin{thebibliography}{9}
 
-  \end{paracol}
+\bibitem{typeReference} 
+Arten der Virtualisierung,
+\\\texttt{https://www.cloudcomputing-insider.de\newline/was-ist-virtualisierung-a-756279/}
+
+\end{thebibliography}
+
+\end{paracol}
 
 \end{document}
