@@ -88,13 +88,13 @@
 \cvevent{Vorteile}{}{}{}
 \begin{itemize}
 \item Arbeitsspeicher und CPU werden konstanter ausgelastet, nicht nur bei Server-Spitzen.
-\item Eine VM ist schnell wiederhergestellt. \newline Auf Host-Ebene sind alle virtuellen Maschinen gemeinsam sicherbar.
+\item Eine VM ist schnell wiederhergestellt.\newline Auf Host-Ebene sind alle virtuellen Maschinen \newline gemeinsam sicherbar.
 \item Mit wenig Aufwand, kann ein weiterer Host \newline / Server / virtueller Desktop aufgesetzt und die VMs repliziert werden.  
 \item Gesamtes System, auch virtuelle Server mit einem Programm verwaltbar.
 
 \end{itemize}
 
-\divider
+\vspace{3mm}
 
 \cvevent{Nachteile}{}{}{}
 \begin{itemize}
@@ -135,7 +135,15 @@
 \vspace{3mm}
 
 \includegraphics[width=0.48\textwidth]{Hosted.PNG}
-\centering kaskjaksksjakjsajskajksajk
+
+\newpage
+\begin{thebibliography}{9}
+
+\bibitem{typeReference} 
+Arten der Virtualisierung,
+\\\texttt{https://www.cloudcomputing-insider.de\newline/was-ist-virtualisierung-a-756279/}
+
+\end{thebibliography}
 
 \switchcolumn
 
@@ -143,9 +151,9 @@
 
 \cvachievement{\faDesktop}{Desktopvirtualisierung}{
     \begin{itemize}
-        \item Abbild des Arbeitsplatzes zentral im Rechenzentrum Verfügungbar.
+        \item Abbild des Arbeitsplatzes zentral im Rechenzentrum Verfügbar.
         \item Anwender verbindet sich mit dem Image im Rechenzentrum
-        \item Je nach System und Strategie, ein dediziertes Image möglich oder alle / eine Gruppe von Mitarbeitern nutzt ein gemeinsames Image.
+        \item Je System und Strategie ist ein dediziertes Image möglich oder alle/eine Gruppe von Mitarbeitern, nutzt ein gemeinsames Image.
     \end{itemize}
 }
 
@@ -172,22 +180,13 @@
 \cvachievement{\faWifi}{Netzwerkvirtualisierung}{
     \begin{itemize}
         \item Trennt die Netzwerkfunktionen von den physischen Systemen
-        \item Anzahl an physischen Systemen reduziert, da auf gemeinsamen Host-Systemen virtuell bereitgestellt... 
-        \item (SDN) Hoher Grad der Virtualisierung, trennt die Netzwerksoftware vollständig von Netzwerkhardware.
+        \item Reduziert Anzahl an physischen Systemen, da auf gemeinsamen Host-Systemen virtuell bereitgestellt. 
+        \item (SDN) Hoher Grad der Virtualisierung, trennt die Netzwerksoftware von Netzwerkhardware.
     \end{itemize}
 }
 
 \includegraphics[width=0.48\textwidth]{Bare.PNG}
-
-\newpage
-
-\begin{thebibliography}{9}
-
-\bibitem{typeReference} 
-Arten der Virtualisierung,
-\\\texttt{https://www.cloudcomputing-insider.de\newline/was-ist-virtualisierung-a-756279/}
-
-\end{thebibliography}
+\footnote{Der Bare-Metal-Typ kann ohne weitere Software mit der Hardware kommunizieren und setzt nicht wie der Host-Typ auf einem vollwertigen Betriebssystem auf.}
 
 \end{paracol}
 
